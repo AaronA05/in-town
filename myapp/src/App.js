@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Button, Icon } from 'react-materialize'
+import EBevent from './components/EBevent';
+import SearchForm from './components/SearchForm';
 
 class App extends Component {
   render() {
@@ -14,9 +15,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Button waves='light'>
-          <Icon>thumb_up</Icon>
-        </Button>
+        <EBevent />
+        <SearchForm />
       </div>
     );
   }
