@@ -1,13 +1,18 @@
-import React from "react";
-import { Button, Icon } from "react-materialize";
+import React from 'react';
+import { Card, Col } from 'react-materialize';
 
-
-export default class EBevent extends React.Component{
-    render(){
+export default class EBevent extends React.Component {
+    render() {
         return (
-            <Button waves='light'>
-                <Icon>thumb_up</Icon>
-            </Button>
+            <Col m={6} s={12}>
+                <Card className='blue-grey darken-1' textClassName='white-text' title='Card title' actions={[<a href={this.props.link} target="#">This is a link</a>]}>
+                    {this.props.bigTitle}
+                </Card>
+            </Col>
+
         )
     }
 }
+
+
+
