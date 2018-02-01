@@ -13,24 +13,35 @@ class App extends Component {
   }
 
   searchEB(query){
+    const limitResults = [];
     API.search(query)
-      .then(res => this.setState({ results: res.data.events }))
+      .then(res => {
+
+      
+        for(var i=0; i<10;i++){
+          limitResults.push(res.data.events[i])
+        }
+        this.setState({ results: limitResults })
+      }
+      )
       .catch(err => console.log(err));
   }
 
   cbSearchQuery = (dataFromSeach) => {
-    console.log(dataFromSeach)
+    this.searchEB(dataFromSeach);
   }
   
   render() {
     return (
       <div>
         <SearchForm cbFromApp={this.cbSearchQuery} />
-        {this.state.results.map(resultsData => {
+        {this.state.results.map((resultsData, index) => {
           return(
            <EBevent
+              key={index}
               link={resultsData.url}
-              bigTitle={resultsData.name.text}
+              mainTitle={resultsData.name.text}
+              // subTitle={resultsData.description.text}
             />
           );
         })}

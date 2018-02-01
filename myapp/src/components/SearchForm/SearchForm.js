@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Row } from 'react-materialize';
 
-
+//?q=music&location.address=Dallas%2C+TX
 export default class SearchForm extends React.Component{
     constructor(props){
         super(props);
@@ -22,9 +22,13 @@ export default class SearchForm extends React.Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        alert('A name was submitted: ' + this.state.city + ' ' + this.state.stateLoc);
-        this.props.cbFromApp(this.state);
-        
+        this.createQuery(this.state);
+    }
+
+    createQuery(textString){
+        const { city, stateLoc } = textString
+        let myQuery = "location.address="+city+"%2C+"+stateLoc;
+        this.props.cbFromApp(myQuery)
     }
 
     render(){

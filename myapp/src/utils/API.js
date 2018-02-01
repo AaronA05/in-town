@@ -6,6 +6,6 @@ const APIKEY = "&token=WYIP6EGD7WSBOXPBEDBA";
 // Export an object with a "search" method that searches the Giphy API for the passed query
 export default {
     search: function (query) {
-        return axios.get(BASEURL + APIKEY);
+        return axios.get(BASEURL + query + APIKEY);
     }
 };
