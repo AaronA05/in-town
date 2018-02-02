@@ -16,8 +16,6 @@ class App extends Component {
     const limitResults = [];
     API.search(query)
       .then(res => {
-
-      
         for(var i=0; i<10;i++){
           limitResults.push(res.data.events[i])
         }
@@ -41,7 +39,6 @@ class App extends Component {
               key={index}
               link={resultsData.url}
               mainTitle={resultsData.name.text}
-              // subTitle={resultsData.description.text}
             />
           );
         })}

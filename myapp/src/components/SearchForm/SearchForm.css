@@ -1,0 +1,13 @@
+
+Input.error {
+  border-color: red;
+}
+
+Button:hover {
+  background-color: #669509;
+}
+
+Button:disabled {
+  background-color: #dbf99f;
+  color: #333;
+}
