@@ -9,9 +9,11 @@ export default class SearchForm extends React.Component{
         this.state = {
             city: '',
             stateLoc: '',
+            startDate: '',
+            endDate: '',
             touched: {
                 city: false,
-                password: false
+                stateLoc: false
             }
         };
 
@@ -31,6 +33,7 @@ export default class SearchForm extends React.Component{
             event.preventDefault();
             return;
         }
+        console.log(this.state.startDate)
         this.createQuery(this.state);
     }
 
@@ -57,6 +60,7 @@ export default class SearchForm extends React.Component{
         city: this.state.city.length === 0,
         stateLoc: this.state.stateLoc.length === 0
     }
+
 }
 
     render(){
@@ -90,17 +94,20 @@ export default class SearchForm extends React.Component{
                 />
             </Row>
             <Row>
-                <Input 
-                    name='on' 
-                    type='date' 
-                    onChange={function (e, value) { }} 
-                    label='Start Date'
+                <Input
+                    name='startDate'
+                    type='date'
+                    onChange={this.handleChange}
+                    value={this.state.startDate}
+                    label='Date of Arrival'
+                // YYYY-MM-DDThh:mm:ss
                 />
                 <Input
-                    name='on'
+                    name='endDate'
                     type='date'
-                    onChange={function (e, value) { }}
-                    label='End Date'
+                    onChange={this.handleChange}
+                    value={this.state.endDate}
+                    label='Date of Departure'
                     // YYYY-MM-DDThh:mm:ss
                 />
             </Row>
