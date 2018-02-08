@@ -13,6 +13,7 @@ class App extends Component {
   }
 
   searchEB(query){
+    console.log(query);
     const limitResults = [];
     API.search(query)
       .then(res => {
@@ -39,6 +40,7 @@ class App extends Component {
               key={index}
               link={resultsData.url}
               mainTitle={resultsData.name.text}
+              information={resultsData.start.local}
             />
           );
         })}

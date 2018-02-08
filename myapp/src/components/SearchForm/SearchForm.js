@@ -33,7 +33,6 @@ export default class SearchForm extends React.Component{
             event.preventDefault();
             return;
         }
-        console.log(this.state.startDate)
         this.createQuery(this.state);
     }
 
@@ -44,8 +43,22 @@ export default class SearchForm extends React.Component{
     }
 
     createQuery(textString){
-        const { city, stateLoc } = textString
-        let myQuery = "location.address="+city+"%2C+"+stateLoc;
+        const { city, stateLoc, startDate, endDate } = textString
+        console.log("START", startDate);
+        let myStartDate = new Date(startDate);
+        let startDay = myStartDate.getDate();
+        let startMonth = myStartDate.getMonth() + 1;
+        let startYear = myStartDate.getFullYear();
+        let myEndDate = new Date(endDate);
+        let endDay = myEndDate.getDate();
+        let endMonth = myEndDate.getMonth() + 1;
+        let endYear = myEndDate.getFullYear();
+        // start_date.range_start = 2018 - 03 - 22018 - 03 - 4T00 % 3A00 % 3A00
+        // YYYY-MM-DDThh:mm:ss
+        let myStartDateQuery = "&start_date.range_start=" + startYear + "-" + startMonth + "-" + startDay + "T00%3A00%3A00";
+        let myEndDateQuery = "&start_date.range_end=" + endYear + "-" + endMonth + "-" + endDay +"T00%3A00%3A00";
+        let myQuery = "location.address=" + city + "%2C+" + stateLoc + myStartDateQuery + myEndDateQuery; 
+        console.log(myQuery);
         this.props.cbFromApp(myQuery)
     }
 
