@@ -12,6 +12,7 @@ export default class EBevent extends React.Component {
                         title={this.props.mainTitle} 
                         actions={[<a href={this.props.link} target="#">Event Link</a>]}>
                         {this.props.information}
+                        {this.props.startTime}
                     </Card>
                 </Col>
             </Container>

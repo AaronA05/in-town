@@ -40,7 +40,8 @@ class App extends Component {
               key={index}
               link={resultsData.url}
               mainTitle={resultsData.name.text}
-              information={resultsData.start.local}
+              startTime={resultsData.start.local}
+              information={resultsData.start.timezone}
             />
           );
         })}

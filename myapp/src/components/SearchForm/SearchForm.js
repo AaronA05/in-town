@@ -11,6 +11,10 @@ export default class SearchForm extends React.Component{
             stateLoc: '',
             startDate: '',
             endDate: '',
+            music: false,
+            busAndPro: false,
+            foodAndDrink: false,
+            commAndCult: false,
             touched: {
                 city: false,
                 stateLoc: false
@@ -20,6 +24,7 @@ export default class SearchForm extends React.Component{
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
+        this.handleCheck = this.handleCheck.bind(this);
     }
 
     handleChange(event){
@@ -28,11 +33,18 @@ export default class SearchForm extends React.Component{
         });
     }
 
+    handleCheck(event){
+        this.setState({
+            music: !this.state.music
+        });
+    }
+
     handleSubmit(event) {
         if(!this.canBeSubmitted()){
             event.preventDefault();
             return;
         }
+        console.log(this.state.music)
         this.createQuery(this.state);
     }
 
@@ -122,7 +134,11 @@ export default class SearchForm extends React.Component{
                     value={this.state.endDate}
                     label='Date of Departure'
                     // YYYY-MM-DDThh:mm:ss
-                />
+                /> 
+                <Input name='music' type='checkbox' value={this.state.music} label='Music' onClick={this.handleCheck} />
+                <Input name='busAndPro' type='checkbox' value='yellow' label='Business & Professional' onChange={this.handleChange} />
+                <Input name='foodAndDrink' type='checkbox' value='green' label='Food & Drink' onChange={this.handleChange} />
+                <Input name='commAndCult' type='checkbox' value='brown' label='Community and Culture' onChange={this.handleChange} />
             </Row>
             <Row>
                 <Button
